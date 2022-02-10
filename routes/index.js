@@ -6,7 +6,7 @@ router.get("/startups", async (request, response) => {
   console.log("Hello");
   await dbConnect();
   try {
-    let finder = await Startup.find();
+    let finder = await Startup.find().lean();
     response.status(201).send(finder);
   } catch (error) {
     response.send("Some error happened");
